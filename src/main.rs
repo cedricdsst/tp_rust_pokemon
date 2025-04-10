@@ -3,7 +3,7 @@ use rand::Rng;
 use std::fs::File;
 use std::io::prelude::*;
 
-// Partie 1: Définir les Pokemon
+// Définir les Pokemon
 #[derive(Debug, Clone, PartialEq)]
 pub enum PokemonType {
     Feu,
@@ -49,7 +49,7 @@ pub struct Pokemon {
     genre: Genre,
 }
 
-// Partie 2: Fonctions et comportements
+// Fonctions et comportements
 impl Pokemon {
     pub fn new(nom: String, pokemon_type: PokemonType, genre: Genre) -> Self {
         Pokemon {
@@ -92,7 +92,7 @@ impl Pokemon {
             return false;
         }
         
-        // Vérifier si les deux Pokémon ont un niveau suffisant (supposons niveau 5 minimum)
+        
         if self.niveau < 5 || autre.niveau < 5 {
             return false;
         }
@@ -100,7 +100,7 @@ impl Pokemon {
         true
     }
 
-    // Partie 3: Reproduction
+    //Reproduction
     pub fn reproduire(&self, autre: &Pokemon) -> Option<Pokemon> {
         if self.peuvent_se_reproduire(autre) {
             let mut rng = rand::thread_rng();
@@ -132,7 +132,7 @@ impl Pokemon {
     }
 }
 
-// Partie 4: Gestion de l'élevage
+// Gestion de l'élevage
 #[derive(Debug)]
 pub struct Elevage {
     pokemon: Vec<Pokemon>,
@@ -189,7 +189,7 @@ impl Elevage {
         }
     }
     
-    // Bonus: Trier les Pokémon
+  
     pub fn trier_par_niveau(&mut self) {
         self.pokemon.sort_by(|a, b| a.niveau.cmp(&b.niveau));
     }
@@ -202,7 +202,7 @@ impl Elevage {
         });
     }
     
-    // Bonus: Sauvegarder les données
+   
     pub fn sauvegarder_dans_fichier(&self, chemin: &str) -> std::io::Result<()> {
         let mut fichier = File::create(chemin)?;
         
